@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { DUNE_LOGO } from '@/assets/logo';
 import QuoteModal from '@/components/QuoteModal';
+import ProductsMegaMenu from '@/components/ProductsMegaMenu';
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Products', to: '/products' },
+  { label: 'Products', to: '/products', hasMega: true },
   { label: 'Services', to: '#services' },
   { label: 'Certificates', to: '#certificates' },
   { label: 'About Us', to: '/about' },
@@ -17,6 +18,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
+  const megaTimeout = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,6 +27,17 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Close mega menu on route change
+  useEffect(() => { setMegaOpen(false); }, [location.pathname]);
+
+  const handleMegaEnter = () => {
+    clearTimeout(megaTimeout.current);
+    setMegaOpen(true);
+  };
+  const handleMegaLeave = () => {
+    megaTimeout.current = setTimeout(() => setMegaOpen(false), 150);
+  };
 
   const isActive = (link) => {
     if (link.to.startsWith('#')) return false;
@@ -38,6 +52,26 @@ export default function Navbar() {
         ? 'text-dune-gold border-b-2 border-dune-gold pb-1'
         : 'text-white/70 hover:text-white'
     }`;
+
+    if (link.hasMega) {
+      return (
+        <div
+          key={link.label}
+          className="relative"
+          onMouseEnter={handleMegaEnter}
+          onMouseLeave={handleMegaLeave}
+        >
+          <Link
+            to={link.to}
+            data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+            className={`${cls} inline-flex items-center gap-1`}
+          >
+            {link.label}
+            <ChevronDown size={14} className={`transition-transform duration-200 ${megaOpen ? 'rotate-180' : ''}`} />
+          </Link>
+        </div>
+      );
+    }
 
     if (link.to.startsWith('#')) {
       return (
@@ -66,18 +100,10 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-6 md:px-10 lg:px-12 max-w-[1920px] mx-auto h-[72px]">
         {/* Logo */}
         <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3 flex-shrink-0">
-          <img
-            src={DUNE_LOGO}
-            alt="Dune Oil Logo"
-            className="h-[52px] w-auto"
-          />
+          <img src={DUNE_LOGO} alt="Dune Oil Logo" className="h-[52px] w-auto" />
           <div className="flex flex-col">
-            <span className="text-[17px] font-black tracking-tight text-white font-headline leading-tight">
-              Dune Lubricants
-            </span>
-            <span className="text-[8px] uppercase tracking-[0.14em] text-white/40 font-label">
-              and Oil IND L.L.C S.P
-            </span>
+            <span className="text-[17px] font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
+            <span className="text-[8px] uppercase tracking-[0.14em] text-white/40 font-label">and Oil IND L.L.C S.P</span>
           </div>
         </Link>
 
@@ -101,6 +127,11 @@ export default function Navbar() {
         <button data-testid="mobile-menu-toggle" className="lg:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
+      </div>
+
+      {/* Mega Menu */}
+      <div onMouseEnter={handleMegaEnter} onMouseLeave={handleMegaLeave}>
+        <ProductsMegaMenu visible={megaOpen} />
       </div>
 
       {/* Mobile Menu */}
