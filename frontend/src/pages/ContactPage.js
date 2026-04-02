@@ -165,7 +165,7 @@ export default function ContactPage() {
             <div data-testid="contact-map" className="overflow-hidden h-[300px] bg-dune-surface-container-high relative shadow-lg">
               <iframe
                 title="Dune Lubricants Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.0!2d55.46!3d25.31!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f3b3b3b3b3b%3A0x0!2zQWwgU2FqamEgSW5kdXN0cmlhbCBBcmVh!5e0!3m2!1sen!2sae!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1500!2d55.640051!3d25.339778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
