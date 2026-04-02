@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { DUNE_LOGO } from '@/assets/logo';
+import QuoteModal from '@/components/QuoteModal';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -86,13 +88,13 @@ export default function Navbar() {
 
         {/* Get Quote Button */}
         <div className="hidden lg:flex items-center flex-shrink-0">
-          <Link
-            to="/contact"
+          <button
+            onClick={() => setQuoteOpen(true)}
             data-testid="get-quote-btn"
             className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-[12px] font-bold px-7 py-2.5 hover:brightness-110 transition-all"
           >
             Get Quote
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -121,11 +123,12 @@ export default function Navbar() {
               );
             })}
             <div className="mt-4 pt-4 border-t border-white/5">
-              <Link to="/contact" onClick={() => setMobileOpen(false)} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center block">Get Quote</Link>
+              <button onClick={() => { setMobileOpen(false); setQuoteOpen(true); }} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center block w-full">Get Quote</button>
             </div>
           </div>
         </div>
       )}
+      <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} />
     </nav>
   );
 }
