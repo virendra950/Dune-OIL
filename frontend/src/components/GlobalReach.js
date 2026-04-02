@@ -18,8 +18,8 @@ export default function GlobalReach() {
             Our Global Reach
           </h2>
           <p className="text-dune-on-surface-variant max-w-2xl mx-auto">
-            Strategically headquartered in the heart of global trade, Dune Lubricants maintains 
-            an expansive distribution network serving over 40 countries.
+            Strategically headquartered in Sharjah, UAE, Dune Lubricants maintains 
+            an expansive distribution network serving over 40 countries from Al Sajja Industrial Area.
           </p>
         </div>
 
@@ -39,8 +39,8 @@ export default function GlobalReach() {
                   <div className="absolute -inset-8 bg-dune-gold/20 rounded-full animate-ping-slow" />
                   <div className="w-4 h-4 bg-dune-gold rounded-full relative z-10 shadow-lg" />
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-dune-primary text-white px-6 py-3 whitespace-nowrap shadow-2xl">
-                    <p className="font-headline text-sm font-bold tracking-widest">GLOBAL HQ: DUBAI, UAE</p>
-                    <p className="text-[10px] text-white/60">Logistics Hub &amp; R&amp;D Center</p>
+                    <p className="font-headline text-sm font-bold tracking-widest">GLOBAL HQ: SHARJAH, UAE</p>
+                    <p className="text-[10px] text-white/60">Al Sajja Industrial Area</p>
                   </div>
                 </div>
               </div>

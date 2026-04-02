@@ -8,6 +8,7 @@ import GlobalReach from "@/components/GlobalReach";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import ProductsPage from "@/pages/ProductsPage";
+import ContactPage from "@/pages/ContactPage";
 
 function HomePage() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   );

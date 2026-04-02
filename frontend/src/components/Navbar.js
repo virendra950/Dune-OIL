@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'About Us', to: '#about' },
   { label: 'Find a Retailer', to: '#retailer' },
   { label: 'Dune Advisor', to: '#advisor' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
@@ -67,7 +68,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex gap-4">
           <button data-testid="get-quote-btn" className="bg-white/5 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 hover:bg-white/10 transition-all duration-300">Get a Quote</button>
-          <button data-testid="contact-engineering-btn" className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 hover:opacity-90 transition-all">Contact Engineering</button>
+          <Link to="/contact" data-testid="contact-engineering-btn" className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 hover:opacity-90 transition-all">Contact Engineering</Link>
         </div>
 
         <button data-testid="mobile-menu-toggle" className="lg:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -95,7 +96,7 @@ export default function Navbar() {
             })}
             <div className="flex flex-col gap-3 mt-4">
               <button className="bg-white/5 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3">Get a Quote</button>
-              <button className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3">Contact Engineering</button>
+              <Link to="/contact" onClick={() => setMobileOpen(false)} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center">Contact Engineering</Link>
             </div>
           </div>
         </div>
