@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { DUNE_LOGO } from '@/assets/logo';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -64,7 +65,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3 flex-shrink-0">
           <img
-            src="/dune-logo-header.png"
+            src={DUNE_LOGO}
             alt="Dune Oil Logo"
             className="h-[52px] w-auto"
           />

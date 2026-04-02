@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { DUNE_LOGO } from '@/assets/logo';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img
-              src="/dune-logo-header.png"
+              src={DUNE_LOGO}
               alt="Dune Oil Logo"
               className="h-10 w-auto"
             />
