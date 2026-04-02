@@ -52,21 +52,12 @@ export default function Navbar() {
       style={{ borderBottom: 'none' }}
     >
       <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1920px] mx-auto">
-        <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3">
-          <div className="relative h-12 w-12 flex-shrink-0">
-            <div className="absolute inset-[-6px] rounded-full bg-gradient-to-br from-dune-gold/25 via-[#4a7ab5]/15 to-transparent blur-lg" />
-            <div
-              className="relative h-full w-full rounded-full ring-1 ring-white/[0.06]"
-              style={{
-                backgroundImage: `url(${LOGO_URL})`,
-                backgroundSize: '200% 200%',
-                backgroundPosition: '47% 25%',
-                backgroundBlendMode: 'screen',
-                backgroundColor: '#000320',
-                filter: 'brightness(2) contrast(1.3) saturate(1.6)',
-              }}
-            />
-          </div>
+        <Link to="/" data-testid="navbar-logo" className="flex items-center gap-2">
+          <img
+            src="/dune-logo-dark.png"
+            alt="Dune Oil Logo"
+            className="h-14 w-auto"
+          />
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
             <span className="text-[9px] uppercase tracking-[0.15em] text-white/50 font-label">and Oil IND L.L.C S.P</span>
