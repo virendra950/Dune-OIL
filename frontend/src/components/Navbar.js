@@ -8,6 +8,8 @@ const navLinks = [
   { label: 'Products', to: '/products' },
   { label: 'Services', to: '#services' },
   { label: 'Certificates', to: '#certificates' },
+  { label: 'About Us', to: '/about' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
