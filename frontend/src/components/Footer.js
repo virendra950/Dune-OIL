@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_888a19ae-5a80-4564-9e16-86ab86e3567b/artifacts/81vztrzy_Dune%20oil.jpeg";
-
 export default function Footer() {
   const [email, setEmail] = useState('');
 
@@ -11,13 +9,11 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
-              <img
-                src={LOGO_URL}
-                alt="Dune Oil Logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <img
+              src="/dune-logo-header.png"
+              alt="Dune Oil Logo"
+              className="h-10 w-auto"
+            />
             <div className="flex flex-col">
               <span className="text-base font-bold text-white font-headline leading-tight">
                 Dune Lubricants
