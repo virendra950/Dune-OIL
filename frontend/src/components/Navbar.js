@@ -4,11 +4,12 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { DUNE_LOGO } from '@/assets/logo';
 import QuoteModal from '@/components/QuoteModal';
 import ProductsMegaMenu from '@/components/ProductsMegaMenu';
+import ServicesMegaMenu from '@/components/ServicesMegaMenu';
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Products', to: '/products', hasMega: true },
-  { label: 'Services', to: '#services' },
+  { label: 'Products', to: '/products', mega: 'products' },
+  { label: 'Services', to: '#services', mega: 'services' },
   { label: 'Certificates', to: '#certificates' },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
@@ -18,7 +19,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(null); // 'products' | 'services' | null
   const megaTimeout = useRef(null);
   const location = useLocation();
 
@@ -29,14 +30,14 @@ export default function Navbar() {
   }, []);
 
   // Close mega menu on route change
-  useEffect(() => { setMegaOpen(false); }, [location.pathname]);
+  useEffect(() => { setMegaOpen(null); }, [location.pathname]);
 
-  const handleMegaEnter = () => {
+  const handleMegaEnter = (id) => {
     clearTimeout(megaTimeout.current);
-    setMegaOpen(true);
+    setMegaOpen(id);
   };
   const handleMegaLeave = () => {
-    megaTimeout.current = setTimeout(() => setMegaOpen(false), 150);
+    megaTimeout.current = setTimeout(() => setMegaOpen(null), 150);
   };
 
   const isActive = (link) => {
@@ -53,21 +54,22 @@ export default function Navbar() {
         : 'text-white/70 hover:text-white'
     }`;
 
-    if (link.hasMega) {
+    if (link.mega) {
       return (
         <div
           key={link.label}
           className="relative"
-          onMouseEnter={handleMegaEnter}
+          onMouseEnter={() => handleMegaEnter(link.mega)}
           onMouseLeave={handleMegaLeave}
         >
           <Link
-            to={link.to}
+            to={link.to.startsWith('#') ? '#' : link.to}
             data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
             className={`${cls} inline-flex items-center gap-1`}
+            onClick={(e) => { if (link.to.startsWith('#')) e.preventDefault(); }}
           >
             {link.label}
-            <ChevronDown size={14} className={`transition-transform duration-200 ${megaOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown size={14} className={`transition-transform duration-200 ${megaOpen === link.mega ? 'rotate-180' : ''}`} />
           </Link>
         </div>
       );
@@ -129,9 +131,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mega Menu */}
-      <div onMouseEnter={handleMegaEnter} onMouseLeave={handleMegaLeave}>
-        <ProductsMegaMenu visible={megaOpen} />
+      {/* Mega Menus */}
+      <div onMouseEnter={() => handleMegaEnter(megaOpen)} onMouseLeave={handleMegaLeave}>
+        <ProductsMegaMenu visible={megaOpen === 'products'} />
+        <ServicesMegaMenu visible={megaOpen === 'services'} />
       </div>
 
       {/* Mobile Menu */}
