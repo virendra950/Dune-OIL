@@ -9,6 +9,7 @@ import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import ProductsPage from "@/pages/ProductsPage";
 import ContactPage from "@/pages/ContactPage";
+import AboutPage from "@/pages/AboutPage";
 
 function HomePage() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -7,7 +7,7 @@ const LOGO_URL = "https://customer-assets.emergentagent.com/job_888a19ae-5a80-45
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Products', to: '/products' },
-  { label: 'About Us', to: '#about' },
+  { label: 'About Us', to: '/about' },
   { label: 'Find a Retailer', to: '#retailer' },
   { label: 'Dune Advisor', to: '#advisor' },
   { label: 'Contact', to: '/contact' },
