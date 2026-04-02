@@ -18,7 +18,8 @@ export default function Navbar() {
 
   const isActive = (link) => {
     if (link.to.startsWith('#')) return false;
-    return location.pathname === link.to;
+    if (link.to === '/') return location.pathname === '/';
+    return location.pathname.startsWith(link.to);
   };
 
   const renderLink = (link) => {
