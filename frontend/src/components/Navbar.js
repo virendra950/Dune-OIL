@@ -7,7 +7,6 @@ const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Products', to: '/products' },
   { label: 'About Us', to: '/about' },
-  { label: 'Find a Retailer', to: '#retailer' },
   { label: 'Dune Advisor', to: '#advisor' },
   { label: 'Contact', to: '/contact' },
 ];
