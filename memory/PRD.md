@@ -1,18 +1,14 @@
-# Dune Lubricants Landing Page - PRD
+# Dune Lubricants - PRD
 
-## Company Info
-- **Name**: Dune Lubricants and Oil IND L.L.C S.P
-- **Email**: info.duneoil@gmail.com | **Website**: duneindustries.com
-- **Phones**: +971 50 3343543, +971 52 9505734
-- **HQ**: Al Sajja Industrial Area, Sharjah, UAE
+## Pages Implemented (Dec 2025)
+- **/ (Home)**: Hero, Product Categories, Scientific Precision, Global Reach (Sharjah HQ), CTA, Footer
+- **/products**: PCMO (Apex GT-1), Diesel (Titan HDX), Brake Oil (DOT 3/4), CTA
+- **/contact**: Address/Email/Phone/Website cards, Google Maps (25.339778, 55.640051), Inquiry form
+- **/about**: Heritage (since 2000), Manufacturing Excellence, Quality Assurance, Global Distribution, Tech Data
 
-## Implemented Pages (Dec 2025)
-- **/ (Home)**: Navbar, Hero, Product Categories, Scientific Precision, Global Reach (Sharjah HQ), CTA, Footer
-- **/products**: Hero, PCMO (Apex GT-1), Diesel (Titan HDX), Brake Oil (DOT 3/4), CTA, Footer
-- **/contact**: Hero, Address/Email/Phone/Website cards, Google Maps embed, Technical Inquiry form, CTA, Footer
-- **Navigation**: React Router with active state highlighting, Contact Engineering button links to /contact
+## Navigation: Home | Products | About Us | Find a Retailer | Dune Advisor | Contact + Contact Engineering button
 
 ## Backlog
-### P0 - About Us, Find a Retailer, Dune Advisor pages
-### P1 - Backend form submission (store inquiries in MongoDB), email notifications
-### P2 - SEO, analytics, WhatsApp chat
+### P0 - Find a Retailer, Dune Advisor pages
+### P1 - Backend form submission, email notifications
+### P2 - SEO, analytics
