@@ -53,11 +53,11 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1920px] mx-auto">
         <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden bg-white flex items-center justify-center">
+          <div className="h-14 w-14 rounded-full overflow-hidden bg-white flex items-center justify-center shadow-md flex-shrink-0">
             <img src={LOGO_URL} alt="Dune Oil Logo" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
+            <span className="text-xl font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
             <span className="text-[9px] uppercase tracking-[0.15em] text-white/50 font-label">and Oil IND L.L.C S.P</span>
           </div>
         </Link>
