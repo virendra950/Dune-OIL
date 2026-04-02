@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const categories = [
   {
     tag: 'Series A',
@@ -26,58 +28,29 @@ export default function ProductCategories() {
   return (
     <section id="products" data-testid="product-categories-section" className="py-20 md:py-32 px-6 md:px-12 bg-dune-surface">
       <div className="max-w-[1920px] mx-auto">
-        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-8">
           <div>
-            <h2
-              data-testid="products-heading"
-              className="font-headline text-4xl md:text-5xl font-bold text-dune-primary tracking-tight"
-            >
-              Product Categories
-            </h2>
-            <p className="text-dune-on-surface-variant mt-4 text-lg">
-              Specialized formulations for every industrial frontier.
-            </p>
+            <h2 data-testid="products-heading" className="font-headline text-4xl md:text-5xl font-bold text-dune-primary tracking-tight">Product Categories</h2>
+            <p className="text-dune-on-surface-variant mt-4 text-lg">Specialized formulations for every industrial frontier.</p>
           </div>
           <div className="h-px flex-grow bg-dune-outline-variant/30 mx-12 hidden md:block" />
-          <button
-            data-testid="full-catalog-btn"
-            className="text-dune-primary font-headline font-bold uppercase tracking-wider text-sm flex items-center gap-2 group"
-          >
-            Full Catalog{' '}
-            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-              arrow_forward
-            </span>
-          </button>
+          <Link to="/products" data-testid="full-catalog-btn" className="text-dune-primary font-headline font-bold uppercase tracking-wider text-sm flex items-center gap-2 group">
+            Full Catalog <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </Link>
         </div>
 
-        {/* Category Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((cat) => (
-            <div
-              key={cat.title}
-              data-testid={`product-card-${cat.title.toLowerCase()}`}
-              className="group relative aspect-[4/5] overflow-hidden bg-dune-primary cursor-pointer"
-            >
-              <img
-                alt={cat.alt}
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                src={cat.image}
-              />
+            <Link to="/products" key={cat.title} data-testid={`product-card-${cat.title.toLowerCase()}`} className="group relative aspect-[4/5] overflow-hidden bg-dune-primary cursor-pointer block">
+              <img alt={cat.alt} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src={cat.image} />
               <div className="absolute inset-0 bg-gradient-to-t from-dune-primary via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full">
-                <span className="text-dune-gold font-label text-xs uppercase tracking-widest mb-2 block">
-                  {cat.tag}
-                </span>
-                <h3 className="text-white font-headline text-3xl font-bold mb-4">
-                  {cat.title}
-                </h3>
-                <p className="text-white/60 mb-6 line-clamp-2">
-                  {cat.description}
-                </p>
+                <span className="text-dune-gold font-label text-xs uppercase tracking-widest mb-2 block">{cat.tag}</span>
+                <h3 className="text-white font-headline text-3xl font-bold mb-4">{cat.title}</h3>
+                <p className="text-white/60 mb-6 line-clamp-2">{cat.description}</p>
                 <div className="h-1 w-0 bg-dune-gold group-hover:w-full transition-all duration-500" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
