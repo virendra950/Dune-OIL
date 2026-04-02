@@ -53,8 +53,19 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1920px] mx-auto">
         <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3">
-          <div className="h-14 w-14 rounded-full overflow-hidden bg-white flex items-center justify-center shadow-md flex-shrink-0">
-            <img src={LOGO_URL} alt="Dune Oil Logo" className="w-full h-full object-cover" />
+          <div className="relative h-12 w-12 flex-shrink-0">
+            <div className="absolute inset-[-6px] rounded-full bg-gradient-to-br from-dune-gold/25 via-[#4a7ab5]/15 to-transparent blur-lg" />
+            <div
+              className="relative h-full w-full rounded-full ring-1 ring-white/[0.06]"
+              style={{
+                backgroundImage: `url(${LOGO_URL})`,
+                backgroundSize: '200% 200%',
+                backgroundPosition: '47% 25%',
+                backgroundBlendMode: 'screen',
+                backgroundColor: '#000320',
+                filter: 'brightness(2) contrast(1.3) saturate(1.6)',
+              }}
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
