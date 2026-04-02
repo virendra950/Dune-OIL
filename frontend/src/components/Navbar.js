@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_888a19ae-5a80-4564-9e16-86ab86e3567b/artifacts/81vztrzy_Dune%20oil.jpeg";
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -15,7 +13,14 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const isActive = (link) => {
     if (link.to.startsWith('#')) return false;
@@ -25,10 +30,10 @@ export default function Navbar() {
 
   const renderLink = (link) => {
     const active = isActive(link);
-    const cls = `font-headline uppercase tracking-wider text-sm font-bold transition-colors ${
+    const cls = `font-headline uppercase tracking-wider text-[13px] font-bold transition-colors whitespace-nowrap ${
       active
         ? 'text-dune-gold border-b-2 border-dune-gold pb-1'
-        : 'text-white/80 hover:text-white'
+        : 'text-white/70 hover:text-white'
     }`;
 
     if (link.to.startsWith('#')) {
@@ -48,39 +53,63 @@ export default function Navbar() {
   return (
     <nav
       data-testid="navbar"
-      className="fixed top-0 w-full z-50 bg-dune-primary/80 backdrop-blur-xl shadow-[0_40px_60px_-15px_rgba(0,3,32,0.5)]"
-      style={{ borderBottom: 'none' }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-dune-primary shadow-lg'
+          : 'bg-dune-primary shadow-[0_20px_40px_-10px_rgba(0,3,32,0.4)]'
+      }`}
+      style={{ border: 'none' }}
     >
-      <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1920px] mx-auto">
-        <Link to="/" data-testid="navbar-logo" className="flex items-center gap-2">
+      <div className="flex items-center justify-between px-6 md:px-10 lg:px-12 max-w-[1920px] mx-auto h-[72px]">
+        {/* Logo */}
+        <Link to="/" data-testid="navbar-logo" className="flex items-center gap-3 flex-shrink-0">
           <img
-            src="/dune-logo-dark.png"
+            src="/dune-logo-header.png"
             alt="Dune Oil Logo"
-            className="h-14 w-auto"
+            className="h-[52px] w-auto"
           />
           <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tight text-white font-headline leading-tight">Dune Lubricants</span>
-            <span className="text-[9px] uppercase tracking-[0.15em] text-white/50 font-label">and Oil IND L.L.C S.P</span>
+            <span className="text-[17px] font-black tracking-tight text-white font-headline leading-tight">
+              Dune Lubricants
+            </span>
+            <span className="text-[8px] uppercase tracking-[0.14em] text-white/40 font-label">
+              and Oil IND L.L.C S.P
+            </span>
           </div>
         </Link>
 
-        <div className="hidden lg:flex gap-8 items-center">
+        {/* Center Nav Links */}
+        <div className="hidden lg:flex items-center gap-7 mx-auto">
           {navLinks.map(renderLink)}
         </div>
 
-        <div className="hidden lg:flex gap-4">
-          <button data-testid="get-quote-btn" className="bg-white/5 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 hover:bg-white/10 transition-all duration-300">Get a Quote</button>
-          <Link to="/contact" data-testid="contact-engineering-btn" className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 hover:opacity-90 transition-all">Contact Engineering</Link>
+        {/* Right Buttons */}
+        <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <button
+            data-testid="get-quote-btn"
+            className="border border-white/15 text-white font-headline uppercase tracking-wider text-[11px] font-bold px-5 py-2.5 hover:bg-white/5 transition-all duration-300"
+          >
+            Get a Quote
+          </button>
+          <Link
+            to="/contact"
+            data-testid="contact-engineering-btn"
+            className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-[11px] font-bold px-5 py-2.5 hover:brightness-110 transition-all"
+          >
+            Contact Engineering
+          </Link>
         </div>
 
+        {/* Mobile Toggle */}
         <button data-testid="mobile-menu-toggle" className="lg:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div data-testid="mobile-menu" className="lg:hidden bg-dune-primary/95 backdrop-blur-xl px-6 pb-6">
-          <div className="flex flex-col gap-4">
+        <div data-testid="mobile-menu" className="lg:hidden bg-dune-primary/95 backdrop-blur-xl px-6 pb-6 border-t border-white/5">
+          <div className="flex flex-col gap-4 pt-4">
             {navLinks.map((link) => {
               const active = isActive(link);
               if (link.to.startsWith('#')) {
@@ -96,8 +125,8 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <div className="flex flex-col gap-3 mt-4">
-              <button className="bg-white/5 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3">Get a Quote</button>
+            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-white/5">
+              <button className="border border-white/15 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3">Get a Quote</button>
               <Link to="/contact" onClick={() => setMobileOpen(false)} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center">Contact Engineering</Link>
             </div>
           </div>
