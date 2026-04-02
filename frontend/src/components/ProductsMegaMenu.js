@@ -40,12 +40,14 @@ export default function ProductsMegaMenu({ visible }) {
       }`}
     >
       <div className="max-w-[1920px] mx-auto px-10 lg:px-12 py-8">
-        <div className="grid grid-cols-7 gap-0 divide-x divide-white/5">
+        <div className="grid grid-cols-7 gap-0">
           {productCategories.map((cat) => (
             <div key={cat.name} className="px-5 first:pl-0 last:pr-0">
-              <h4 className="font-headline text-[11px] font-bold uppercase tracking-widest text-dune-gold mb-4 pb-2 border-b border-dune-gold/20">
-                {cat.name}
-              </h4>
+              <div className="bg-dune-gold px-3 py-2 mb-4">
+                <h4 className="font-headline text-[11px] font-bold uppercase tracking-widest text-dune-primary text-center">
+                  {cat.name}
+                </h4>
+              </div>
               <ul className="space-y-1.5">
                 {cat.items.map((item) => (
                   <li key={item}>
