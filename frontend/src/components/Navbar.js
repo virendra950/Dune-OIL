@@ -6,9 +6,8 @@ import { DUNE_LOGO } from '@/assets/logo';
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Products', to: '/products' },
-  { label: 'About Us', to: '/about' },
-  { label: 'Dune Advisor', to: '#advisor' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Services', to: '#services' },
+  { label: 'Certificates', to: '#certificates' },
 ];
 
 export default function Navbar() {
@@ -79,24 +78,18 @@ export default function Navbar() {
         </Link>
 
         {/* Center Nav Links */}
-        <div className="hidden lg:flex items-center gap-7 mx-auto">
+        <div className="hidden lg:flex items-center gap-8 mx-auto">
           {navLinks.map(renderLink)}
         </div>
 
-        {/* Right Buttons */}
-        <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-          <button
-            data-testid="get-quote-btn"
-            className="border border-white/15 text-white font-headline uppercase tracking-wider text-[11px] font-bold px-5 py-2.5 hover:bg-white/5 transition-all duration-300"
-          >
-            Get a Quote
-          </button>
+        {/* Get Quote Button */}
+        <div className="hidden lg:flex items-center flex-shrink-0">
           <Link
             to="/contact"
-            data-testid="contact-engineering-btn"
-            className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-[11px] font-bold px-5 py-2.5 hover:brightness-110 transition-all"
+            data-testid="get-quote-btn"
+            className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-[12px] font-bold px-7 py-2.5 hover:brightness-110 transition-all"
           >
-            Contact Engineering
+            Get Quote
           </Link>
         </div>
 
@@ -125,9 +118,8 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-white/5">
-              <button className="border border-white/15 text-white font-headline uppercase tracking-wider text-xs font-bold px-6 py-3">Get a Quote</button>
-              <Link to="/contact" onClick={() => setMobileOpen(false)} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center">Contact Engineering</Link>
+            <div className="mt-4 pt-4 border-t border-white/5">
+              <Link to="/contact" onClick={() => setMobileOpen(false)} className="bg-dune-gold text-dune-primary font-headline uppercase tracking-wider text-xs font-bold px-6 py-3 text-center block">Get Quote</Link>
             </div>
           </div>
         </div>
