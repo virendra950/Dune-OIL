@@ -43,8 +43,8 @@ export default function ProductsMegaMenu({ visible }) {
         <div className="grid grid-cols-7 gap-0">
           {productCategories.map((cat) => (
             <div key={cat.name} className="px-5 first:pl-0 last:pr-0">
-              <div className="bg-dune-gold px-3 py-2 mb-4">
-                <h4 className="font-headline text-[11px] font-bold uppercase tracking-widest text-dune-primary text-center">
+              <div className="mb-4 pb-2 border-b-2 border-dune-gold">
+                <h4 className="font-headline text-[11px] font-bold uppercase tracking-widest text-white text-center">
                   {cat.name}
                 </h4>
               </div>
