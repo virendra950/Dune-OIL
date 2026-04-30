@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProductCategories from "@/components/ProductCategories";
 import ScientificPrecision from "@/components/ScientificPrecision";
+import PerformanceGraphs from "@/components/PerformanceGraphs";
 import GlobalReach from "@/components/GlobalReach";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ function HomePage() {
       <HeroSection />
       <ProductCategories />
       <ScientificPrecision />
+      <PerformanceGraphs />
       <GlobalReach />
       <CallToAction />
       <Footer />
